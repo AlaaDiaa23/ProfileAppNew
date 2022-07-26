@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Service>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+                <a asp-action="Create" asp-controller="Services" class="btn btn-outline-success">Add New</a>
+                 
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                 
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                 <tr>
+                  <td>@item.Id</td>
+                  <td>@item.Name</td>
+                  <td>@item.Description</td>
+                  
+                  <td>
+                      <a class="btn btn-outline-info" asp-action="Edit" asp-controller="Services" asp-route-id="@item.Id">Edit</a>
+                      <a class="btn btn-outline-danger" asp-action="Delete" asp-controller="Services" asp-route-id="@item.Id">Delete</a>
+                  </td>
+                 
+                </tr>
+                    }
+             
+               
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+ 
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+<!-- ./wrapper -->
+@section Scripts{
+    <!-- jQuery -->
+<script src="~/Admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="~/Admin/plugins/datatables/jquery.dataTables.js"></script>
+<script src="~/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Admin/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="~/Admin/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+    });
+  });
+</script>
+}
+
+</body>
+
+
